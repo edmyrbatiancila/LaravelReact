@@ -1,0 +1,1 @@
+<h1>Laravel + ReactJS Learning goals.</h1>

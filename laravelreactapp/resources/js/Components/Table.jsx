@@ -13,7 +13,7 @@ export default function Table({ users }) {
 
             <tbody className="divide-y divide-gray-200">
                 {users.map((user) => (
-                    <tr className='text-center'>
+                    <tr key={user.id} className='text-center'>
                         <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                                             {user.name}
                                         </td>

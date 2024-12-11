@@ -12,7 +12,7 @@ function EditForm({ user_details }) {
 
     const submit = (e) =>  {
         e.preventDefault();
-        post(route('users.index'));
+        post(route('users.update'));
     }
 
     return (

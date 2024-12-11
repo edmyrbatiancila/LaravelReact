@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -15,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
         $user = auth()-> user();
+        $users = User::where('id', '!=', $user-> id);
         return Inertia::render('Users/Users', ['user' => $user,'users' => $users]);
     }
 
@@ -81,8 +79,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($user_id)
     {
-        //
+        $user = User::find($user_id);
+
+        $user-> delete();
+
+        return to_route('users.index ');
     }
 }
